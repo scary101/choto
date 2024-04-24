@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb87ce322bc74fb583f623523f554d72" Name="Diagram1">
+        <EntityTypeShape EntityType="testloginModel.Accounts" Width="1.5" PointX="3.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Games" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Genres" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Orders" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.PaymentData" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Publisher" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Roles" Width="1.5" PointX="1.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Storage" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.SysRequirements" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Users" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testloginModel.Vouchers" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="testloginModel.FK__Accounts__role_I__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__Accounts__users___5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__Orders__account___5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__Games__publisher__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__Games__publisher__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__Storage__ID_Stor__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__SysRequir__GameI__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__Vouchers__game_i__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__Vouchers__orders__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="testloginModel.FK__PaymentDa__UserI__5535A963" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,707 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище testloginModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="ID_Account" />
+          </Key>
+          <Property Name="ID_Account" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginAcc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordAcc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="users_ID" Type="int" Nullable="false" />
+          <Property Name="role_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="ID_Game" />
+          </Key>
+          <Property Name="ID_Game" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GameName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Coast" Type="int" Nullable="false" />
+          <Property Name="genre_ID" Type="int" Nullable="false" />
+          <Property Name="publisher_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Genres">
+          <Key>
+            <PropertyRef Name="ID_Genre" />
+          </Key>
+          <Property Name="ID_Genre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GanreName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOrder" Type="date" Nullable="false" />
+          <Property Name="FinalyCoast" Type="int" Nullable="false" />
+          <Property Name="Deposite" Type="int" Nullable="false" />
+          <Property Name="ChangeDep" Type="int" Nullable="false" />
+          <Property Name="account_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentData">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="CVV" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID_Publisher" />
+          </Key>
+          <Property Name="ID_Publisher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamePublisher" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="ID_Storage" />
+          </Key>
+          <Property Name="ID_Storage" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SysRequirements">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="int" Nullable="false" />
+          <Property Name="Processor" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="VideoCard" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="DDR" Type="int" Nullable="false" />
+          <Property Name="DiskSpace" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vouchers">
+          <Key>
+            <PropertyRef Name="ID_Voucher" />
+          </Key>
+          <Property Name="ID_Voucher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="game_id" Type="int" Nullable="false" />
+          <Property Name="orders_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Accounts__role_I__52593CB8">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Accounts__users___5165187F">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="users_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Games__publisher__5812160E">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genres">
+              <PropertyRef Name="ID_Genre" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="genre_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Games__publisher__59063A47">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="ID_Publisher" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="publisher_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__account___5EBF139D">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDa__UserI__5535A963">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PaymentData" Type="Self.PaymentData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="PaymentData">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storage__ID_Stor__619B8048">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="ID_Game" />
+            </Principal>
+            <Dependent Role="Storage">
+              <PropertyRef Name="ID_Storage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SysRequir__GameI__5BE2A6F2">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="SysRequirements" Type="Self.SysRequirements" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="ID_Game" />
+            </Principal>
+            <Dependent Role="SysRequirements">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vouchers__game_i__6477ECF3">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="ID_Game" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vouchers__orders__656C112C">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="orders_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище testloginModelContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genres" EntityType="Self.Genres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentData" EntityType="Self.PaymentData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysRequirements" EntityType="Self.SysRequirements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vouchers" EntityType="Self.Vouchers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Accounts__role_I__52593CB8" Association="Self.FK__Accounts__role_I__52593CB8">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Accounts__users___5165187F" Association="Self.FK__Accounts__users___5165187F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Games__publisher__5812160E" Association="Self.FK__Games__publisher__5812160E">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Games__publisher__59063A47" Association="Self.FK__Games__publisher__59063A47">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__account___5EBF139D" Association="Self.FK__Orders__account___5EBF139D">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDa__UserI__5535A963" Association="Self.FK__PaymentDa__UserI__5535A963">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PaymentData" EntitySet="PaymentData" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storage__ID_Stor__619B8048" Association="Self.FK__Storage__ID_Stor__619B8048">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Storage" EntitySet="Storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SysRequir__GameI__5BE2A6F2" Association="Self.FK__SysRequir__GameI__5BE2A6F2">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="SysRequirements" EntitySet="SysRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vouchers__game_i__6477ECF3" Association="Self.FK__Vouchers__game_i__6477ECF3">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vouchers__orders__656C112C" Association="Self.FK__Vouchers__orders__656C112C">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testloginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="ID_Account" />
+          </Key>
+          <Property Name="ID_Account" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordAcc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="users_ID" Type="Int32" Nullable="false" />
+          <Property Name="role_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK__Accounts__role_I__52593CB8" FromRole="Accounts" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Accounts__users___5165187F" FromRole="Accounts" ToRole="Users" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__account___5EBF139D" FromRole="Accounts" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="ID_Game" />
+          </Key>
+          <Property Name="ID_Game" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Coast" Type="Int32" Nullable="false" />
+          <Property Name="genre_ID" Type="Int32" Nullable="false" />
+          <Property Name="publisher_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Genres" Relationship="Self.FK__Games__publisher__5812160E" FromRole="Games" ToRole="Genres" />
+          <NavigationProperty Name="Publisher" Relationship="Self.FK__Games__publisher__59063A47" FromRole="Games" ToRole="Publisher" />
+          <NavigationProperty Name="Storage" Relationship="Self.FK__Storage__ID_Stor__619B8048" FromRole="Games" ToRole="Storage" />
+          <NavigationProperty Name="SysRequirements" Relationship="Self.FK__SysRequir__GameI__5BE2A6F2" FromRole="Games" ToRole="SysRequirements" />
+          <NavigationProperty Name="Vouchers" Relationship="Self.FK__Vouchers__game_i__6477ECF3" FromRole="Games" ToRole="Vouchers" />
+        </EntityType>
+        <EntityType Name="Genres">
+          <Key>
+            <PropertyRef Name="ID_Genre" />
+          </Key>
+          <Property Name="ID_Genre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GanreName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Games" Relationship="Self.FK__Games__publisher__5812160E" FromRole="Genres" ToRole="Games" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID_Order" />
+          </Key>
+          <Property Name="ID_Order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FinalyCoast" Type="Int32" Nullable="false" />
+          <Property Name="Deposite" Type="Int32" Nullable="false" />
+          <Property Name="ChangeDep" Type="Int32" Nullable="false" />
+          <Property Name="account_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Orders__account___5EBF139D" FromRole="Orders" ToRole="Accounts" />
+          <NavigationProperty Name="Vouchers" Relationship="Self.FK__Vouchers__orders__656C112C" FromRole="Orders" ToRole="Vouchers" />
+        </EntityType>
+        <EntityType Name="PaymentData">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CardNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CVV" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__PaymentDa__UserI__5535A963" FromRole="PaymentData" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="ID_Publisher" />
+          </Key>
+          <Property Name="ID_Publisher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamePublisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Games" Relationship="Self.FK__Games__publisher__59063A47" FromRole="Publisher" ToRole="Games" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID_Role" />
+          </Key>
+          <Property Name="ID_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Accounts__role_I__52593CB8" FromRole="Roles" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Storage">
+          <Key>
+            <PropertyRef Name="ID_Storage" />
+          </Key>
+          <Property Name="ID_Storage" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Games" Relationship="Self.FK__Storage__ID_Stor__619B8048" FromRole="Storage" ToRole="Games" />
+        </EntityType>
+        <EntityType Name="SysRequirements">
+          <Key>
+            <PropertyRef Name="GameID" />
+          </Key>
+          <Property Name="GameID" Type="Int32" Nullable="false" />
+          <Property Name="Processor" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VideoCard" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DDR" Type="Int32" Nullable="false" />
+          <Property Name="DiskSpace" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Games" Relationship="Self.FK__SysRequir__GameI__5BE2A6F2" FromRole="SysRequirements" ToRole="Games" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK__Accounts__users___5165187F" FromRole="Users" ToRole="Accounts" />
+          <NavigationProperty Name="PaymentData" Relationship="Self.FK__PaymentDa__UserI__5535A963" FromRole="Users" ToRole="PaymentData" />
+        </EntityType>
+        <EntityType Name="Vouchers">
+          <Key>
+            <PropertyRef Name="ID_Voucher" />
+          </Key>
+          <Property Name="ID_Voucher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="game_id" Type="Int32" Nullable="false" />
+          <Property Name="orders_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Games" Relationship="Self.FK__Vouchers__game_i__6477ECF3" FromRole="Vouchers" ToRole="Games" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Vouchers__orders__656C112C" FromRole="Vouchers" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK__Accounts__role_I__52593CB8">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Accounts__users___5165187F">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="users_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__account___5EBF139D">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="ID_Account" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="account_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Games__publisher__5812160E">
+          <End Role="Genres" Type="Self.Genres" Multiplicity="1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genres">
+              <PropertyRef Name="ID_Genre" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="genre_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Games__publisher__59063A47">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="ID_Publisher" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="publisher_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Storage__ID_Stor__619B8048">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Storage" Type="Self.Storage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="ID_Game" />
+            </Principal>
+            <Dependent Role="Storage">
+              <PropertyRef Name="ID_Storage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SysRequir__GameI__5BE2A6F2">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="SysRequirements" Type="Self.SysRequirements" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="ID_Game" />
+            </Principal>
+            <Dependent Role="SysRequirements">
+              <PropertyRef Name="GameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vouchers__game_i__6477ECF3">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="ID_Game" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vouchers__orders__656C112C">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Vouchers" Type="Self.Vouchers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID_Order" />
+            </Principal>
+            <Dependent Role="Vouchers">
+              <PropertyRef Name="orders_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDa__UserI__5535A963">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="PaymentData" Type="Self.PaymentData" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="PaymentData">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" />
+          <EntitySet Name="Games" EntityType="Self.Games" />
+          <EntitySet Name="Genres" EntityType="Self.Genres" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="PaymentData" EntityType="Self.PaymentData" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Storage" EntityType="Self.Storage" />
+          <EntitySet Name="SysRequirements" EntityType="Self.SysRequirements" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Vouchers" EntityType="Self.Vouchers" />
+          <AssociationSet Name="FK__Accounts__role_I__52593CB8" Association="Self.FK__Accounts__role_I__52593CB8">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Accounts__users___5165187F" Association="Self.FK__Accounts__users___5165187F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__account___5EBF139D" Association="Self.FK__Orders__account___5EBF139D">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Games__publisher__5812160E" Association="Self.FK__Games__publisher__5812160E">
+            <End Role="Genres" EntitySet="Genres" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Games__publisher__59063A47" Association="Self.FK__Games__publisher__59063A47">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Storage__ID_Stor__619B8048" Association="Self.FK__Storage__ID_Stor__619B8048">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Storage" EntitySet="Storage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SysRequir__GameI__5BE2A6F2" Association="Self.FK__SysRequir__GameI__5BE2A6F2">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="SysRequirements" EntitySet="SysRequirements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vouchers__game_i__6477ECF3" Association="Self.FK__Vouchers__game_i__6477ECF3">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vouchers__orders__656C112C" Association="Self.FK__Vouchers__orders__656C112C">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Vouchers" EntitySet="Vouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDa__UserI__5535A963" Association="Self.FK__PaymentDa__UserI__5535A963">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PaymentData" EntitySet="PaymentData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище testloginModelContainer" CdmEntityContainer="ShopEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="testloginModel.Accounts">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="ID_Account" ColumnName="ID_Account" />
+                <ScalarProperty Name="LoginAcc" ColumnName="LoginAcc" />
+                <ScalarProperty Name="PasswordAcc" ColumnName="PasswordAcc" />
+                <ScalarProperty Name="users_ID" ColumnName="users_ID" />
+                <ScalarProperty Name="role_ID" ColumnName="role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="testloginModel.Games">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="ID_Game" ColumnName="ID_Game" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="Coast" ColumnName="Coast" />
+                <ScalarProperty Name="genre_ID" ColumnName="genre_ID" />
+                <ScalarProperty Name="publisher_ID" ColumnName="publisher_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="testloginModel.Genres">
+              <MappingFragment StoreEntitySet="Genres">
+                <ScalarProperty Name="ID_Genre" ColumnName="ID_Genre" />
+                <ScalarProperty Name="GanreName" ColumnName="GanreName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="testloginModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ID_Order" ColumnName="ID_Order" />
+                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+                <ScalarProperty Name="FinalyCoast" ColumnName="FinalyCoast" />
+                <ScalarProperty Name="Deposite" ColumnName="Deposite" />
+                <ScalarProperty Name="ChangeDep" ColumnName="ChangeDep" />
+                <ScalarProperty Name="account_id" ColumnName="account_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentData">
+            <EntityTypeMapping TypeName="testloginModel.PaymentData">
+              <MappingFragment StoreEntitySet="PaymentData">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publisher">
+            <EntityTypeMapping TypeName="testloginModel.Publisher">
+              <MappingFragment StoreEntitySet="Publisher">
+                <ScalarProperty Name="ID_Publisher" ColumnName="ID_Publisher" />
+                <ScalarProperty Name="NamePublisher" ColumnName="NamePublisher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="testloginModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storage">
+            <EntityTypeMapping TypeName="testloginModel.Storage">
+              <MappingFragment StoreEntitySet="Storage">
+                <ScalarProperty Name="ID_Storage" ColumnName="ID_Storage" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysRequirements">
+            <EntityTypeMapping TypeName="testloginModel.SysRequirements">
+              <MappingFragment StoreEntitySet="SysRequirements">
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="VideoCard" ColumnName="VideoCard" />
+                <ScalarProperty Name="DDR" ColumnName="DDR" />
+                <ScalarProperty Name="DiskSpace" ColumnName="DiskSpace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="testloginModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="testloginModel.Vouchers">
+              <MappingFragment StoreEntitySet="Vouchers">
+                <ScalarProperty Name="ID_Voucher" ColumnName="ID_Voucher" />
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
+                <ScalarProperty Name="orders_id" ColumnName="orders_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

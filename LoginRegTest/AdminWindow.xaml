@@ -1,0 +1,31 @@
+﻿<Window x:Class="LoginRegTest.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginRegTest"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="520" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="25*"/>
+
+        </Grid.RowDefinitions>
+        <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Grid.ColumnSpan="5" Grid.Row="1"/>
+        <Button x:Name="Exit_But" Content="Выйти"  Grid.Column="0" Margin="5,12,5,10" Click="Exit_But_Click" />
+        <Button x:Name="Games_But" Content="Магазин"  Grid.Column="1" Margin="5,4,5,3" Click="Games_But_Click"/>
+        <Button x:Name="Users_But" Content="Пользователи"  Grid.Column="2" Margin="5,4,5,3" Click="Users_But_Click"/>
+        <Button x:Name="GenPub_But" Content="Жанр/Издатель"  Grid.Column="3" Margin="5,4,5,3" Click="GenPub_But_Click"/>
+        <Button x:Name="Orders_But" Content="Заказы" ToolTip="Resource name: MaterialDesignRaisedButton" Grid.Column="4" Margin="5,4,5,3" Click="Orders_But_Click"/>
+
+    </Grid>
+</Window>

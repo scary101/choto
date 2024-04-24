@@ -1,0 +1,44 @@
+﻿<Page x:Class="LoginRegTest.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginRegTest"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="RegisterPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="74*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="113*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="10,30,0,0" TextWrapping="Wrap" Text="Логин: " VerticalAlignment="Top" Foreground="White" Width="120" FontSize="20" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="Пароль: " VerticalAlignment="Top" Foreground="White" Width="120" FontSize="20" Grid.Row="1" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="ФИО: " VerticalAlignment="Center" Foreground="White" Width="120" FontSize="20" Grid.Row="2" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="email" VerticalAlignment="Center" Foreground="White" Width="120" FontSize="20" Grid.Row="3" Height="27"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Телефон" VerticalAlignment="Top" Foreground="White" Width="120" FontSize="20" Grid.Row="4" Height="27"/>
+        <TextBox x:Name="Login" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" Height="35" FontSize="15"  Foreground="White"/>
+        <TextBox x:Name="Password" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="225" Height="35" FontSize="15"  Foreground="White" Grid.Row="1"/>
+        <TextBox x:Name="SNP" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="225" Height="35" FontSize="15"  Foreground="White" Grid.Row="2"/>
+        <TextBox x:Name="Email" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="225" Height="35" FontSize="15"  Foreground="White" Grid.Row="3"/>
+        <TextBox x:Name="Phone"  Grid.Column="1" HorizontalAlignment="Stretch" Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" Height="35" FontSize="15"  Foreground="White" Grid.Row="4"/>
+        <Button x:Name="Reg_But"
+          Content="Зарегестрироваться"
+          Style="{StaticResource MaterialDesignRaisedButton}"
+          ToolTip="Resource name: MaterialDesignRaisedButton" Grid.Column="1" Grid.Row="5" Click="Reg_But_Click" />
+        <TextBlock x:Name="InfoReg" Margin="25,10,25,30" Grid.Row="6" TextWrapping="Wrap" Text="" Grid.ColumnSpan="2" Height="40" FontSize="15" Foreground="White"/>
+
+
+
+    </Grid>
+</Page>

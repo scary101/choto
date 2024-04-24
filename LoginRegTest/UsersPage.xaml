@@ -1,0 +1,58 @@
+﻿<Page x:Class="LoginRegTest.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginRegTest"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="UsersPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="12*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="Users_Grid" AutoGenerateColumns="False" Grid.RowSpan="12" IsReadOnly="True" Grid.ColumnSpan="2" Margin="0,0,119,0" SelectionChanged="Users_Grid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Users.Surname}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding Users.UserName}" Header="Имя"/>
+                <DataGridTextColumn Binding="{Binding Users.MiddleName}" Header="Отчество"/>
+                <DataGridTextColumn Binding="{Binding Users.Email}" Header="Почта"/>
+                <DataGridTextColumn Binding="{Binding Users.PhoneNumber}" Header="Телефон"/>
+                <DataGridTextColumn Binding="{Binding LoginAcc}" Header="Логин"/>
+                <DataGridTextColumn Binding="{Binding PasswordAcc}" Header="Пароль"/>
+                <DataGridTextColumn Binding="{Binding Roles.RoleName}" Header="Роль"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="Add_But" Grid.Column="1" Content="Добавить" HorizontalAlignment="Center" Grid.Row="11" VerticalAlignment="Center" Height="32" Width="100" Click="Add_But_Click"/>
+        <Button x:Name="Update_But" Grid.Column="2" Content="Обновить" HorizontalAlignment="Center" Grid.Row="11" VerticalAlignment="Center" Height="32" Width="100" Click="Update_But_Click"/>
+        <Button x:Name="Delete_But" Grid.Column="3" Content="Удалить" HorizontalAlignment="Center" Grid.Row="11" VerticalAlignment="Center" Height="32" Width="100" Click="Delete_But_Click"/>
+        <Button x:Name="Clear_But" Grid.Column="3" Content="Clear" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Height="32" Width="100" Click="Clear_But_Click"/>
+        <TextBox x:Name="Login_Tbx" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Center" HorizontalAlignment="Right" Width="336" Grid.ColumnSpan="3" Margin="0,0,10,0" TextChanged="Login_Tbx_TextChanged"/>
+        <TextBox x:Name="Pass_Tbx"  Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Center" HorizontalAlignment="Right" Width="336" Grid.ColumnSpan="3" Margin="0,0,10,0"/>
+        <TextBox x:Name="FIO_Tbx"  Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="ФИО" VerticalAlignment="Center" HorizontalAlignment="Right" Width="336" Grid.ColumnSpan="3" Margin="0,0,10,0"/>
+        <TextBox x:Name="Email_Tbx"  Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="Почта" VerticalAlignment="Center" HorizontalAlignment="Right" Width="336" Grid.ColumnSpan="3" Margin="0,0,10,0"/>
+        <TextBox x:Name="Phone_Tbx"  Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="Телефон" VerticalAlignment="Center" HorizontalAlignment="Right" Width="336" Grid.ColumnSpan="3" Margin="0,0,10,0"/>
+        <ComboBox x:Name="Role_Cbx" Grid.Column="1" HorizontalAlignment="Right"  Grid.Row="6" Width="326" DisplayMemberPath="RoleName" SelectedValuePath="ID_Role" Grid.ColumnSpan="3" Margin="0,0,15,0"/>
+        <TextBlock x:Name="Info_Tbl" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="7" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="20" Width="225"/>
+        <Button x:Name="RoleTable" Grid.Column="1" Content="Открыть таблицу ролей" HorizontalAlignment="Center"  Grid.Row="9" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="286" Click="RoleTable_Click"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,37 @@
+﻿<Window x:Class="LoginRegTest.SysReqGameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginRegTest"
+        mc:Ignorable="d"
+        Title="SysReqGameWindow" Height="450" Width="550">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="73*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="55*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TitleGame" HorizontalAlignment="Left" Margin="5,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="35" Width="540" FontSize="15"/>
+        <TextBlock HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="Процессор" VerticalAlignment="Center"  FontSize="20" Height="35" Width="165"/>
+        <TextBlock HorizontalAlignment="Center"  Grid.Row="2" TextWrapping="Wrap" Text="Видеокарта" VerticalAlignment="Center" FontSize="20" Width="165" Height="35"/>
+        <TextBlock HorizontalAlignment="Center"  Grid.Row="3" TextWrapping="Wrap" Text="RAM(GB)" VerticalAlignment="Center" FontSize="20" Height="35" Width="165"/>
+        <TextBlock HorizontalAlignment="Center"  Grid.Row="4" TextWrapping="Wrap" Text="Disk Space(GB)" VerticalAlignment="Center" FontSize="20" Height="35" Width="165"/>
+        <TextBox x:Name="Processor_Tbx" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="355" Height="40" FontSize="15"/>
+        <TextBox x:Name="VideoCard_Tbx" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="355" Height="40" FontSize="15"/>
+        <TextBox x:Name="RAM_Tbx" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="355" Height="40" FontSize="15"/>
+        <TextBox x:Name="DisckSpace_Tbx" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="355" Height="40" FontSize="15"/>
+        <Button x:Name="Save_But" Grid.Column="1" Content="Сохранить" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Height="45" Width="355" Click="Save_But_Click"/>
+        <TextBlock x:Name="Info_Txb" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="40" Width="345"/>
+
+    </Grid>
+</Window>

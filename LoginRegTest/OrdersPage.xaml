@@ -1,0 +1,23 @@
+﻿<Page x:Class="LoginRegTest.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LoginRegTest"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="OrdersPage">
+
+    <Grid>
+        <DataGrid x:Name="HisGrid" IsReadOnly="True" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID_Order}" Header="Номер заказа"/>
+                <DataGridTextColumn Binding="{Binding DateOrder}" Header="Дата офмармления заказа"/>
+                <DataGridTextColumn Binding="{Binding FinalyCoast}" Header="Сумма заказа"/>
+                <DataGridTextColumn Binding="{Binding Deposite}" Header="Внесено средств"/>
+                <DataGridTextColumn Binding="{Binding ChangeDep}" Header="Сдача"/>
+                <DataGridTextColumn Binding="{Binding Accounts.LoginAcc}" Header="Покупку совершил"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

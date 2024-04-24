@@ -1,0 +1,25 @@
+﻿<Window x:Class="LoginRegTest.DepositeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginRegTest"
+        mc:Ignorable="d"
+        Title="DepositeWindow" Height="250" Width="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="Pay_But" Content="Оплатить" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Center" Width="190" Click="Pay_But_Click"/>
+        <Button x:Name="Close_But" Content="Закрыть" HorizontalAlignment="Center"  Grid.Row="0" VerticalAlignment="Center" Width="190"/>
+        <TextBlock x:Name="FinPay_Tbl" HorizontalAlignment="Center"  Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="30" Width="190"/>
+        <TextBlock x:Name="Change_Tbl" HorizontalAlignment="Center"  Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="30" Width="190"/>
+        <TextBox x:Name="Pay_Tbx" HorizontalAlignment="Center"  Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="190"/>
+
+    </Grid>
+</Window>
